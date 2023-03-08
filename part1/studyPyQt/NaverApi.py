@@ -25,12 +25,12 @@ class NaverApi:
             else:
                 print(f'[{datetime.datetime.now()}] NAVER API 요청 실패')
                 return None
-            
+
         except Exception as e:
             print(f'[{datetime.datetime.now()}] 예외발생 : {e}')
             return None
 
-    # 호출함수        
+    # 호출함수
     def get_naver_search(self, node, search, start, display):
         base_url = 'https://openapi.naver.com/v1/search'
         node_url = f'/{node}.json'
@@ -42,19 +42,20 @@ class NaverApi:
         if retData == None:
             return None
         else:
-            return json.loads(retData) # json으로 return.
+            return json.loads(retData)  # json으로 return.
 
     # json 데이터 --> list로 변환
-    def get_post_data(self, post, outputs):
+    def get_post_data(self, post, outputs) -> None:
         title = post['title']
         description = post['description']
         originallink = post['originallink']
         link = post['link']
 
         # 문자열로 들어온 걸 날짜형으로 변경
-        pDate = datetime.datetime.strptime(post['pubDate'], '%a, %d, %b, %Y, %H:%M:%S+0900')
+        pDate = datetime.datetime.strptime(
+            post['pubDate'], '%a, %d, %b, %Y, %H:%M:%S+0900')
         pubDate = pDate.strftime('%Y=%m-%d %H:%M:%S')
 
         # outputs에 옮기기
-
-
+        outputs.append({'title': title, 'description': description,
+                       'originallink': originallink, 'link': link, 'pubDate': pubDate})
