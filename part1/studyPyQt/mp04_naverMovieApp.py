@@ -14,7 +14,7 @@ class qtApp(QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi('./studyPyQt/naverApiMovie.ui', self)
-        self.setWindowIcon(QIcon('./studyPyQt/newspaper.png'))
+        self.setWindowIcon(QIcon('./studyPyQt/movie.png'))
 
         # 검색 버튼 클릭시그널 / 슬롯함수
         self.btnSearch.clicked.connect(self.btnSearchClicked)
@@ -52,54 +52,71 @@ class qtApp(QWidget):
 
     # 테이블 위젯에 데이터 표시 -- 네이버 영화 결과 변경
     def makeTable(self, items) -> None:
-        self.tblResult.setSelectionMode(QAbstractItemView.SingleSelection)
+        self.tblResult.setSelectionMode(
+            QAbstractItemView.SingleSelection)      # 단일선택
         self.tblResult.setColumnCount(7)
         self.tblResult.setRowCount(len(items))      # 현재(100개) 행 생성
         self.tblResult.setHorizontalHeaderLabels(
             ['영화제목', '개봉연도', '감독', '배우진', '평점', '영화링크', '포스터'])
-        self.tblResult.setColumnWidth(0, 150)
+        self.tblResult.setColumnWidth(0, 200)
         self.tblResult.setColumnWidth(1, 50)
         self.tblResult.setColumnWidth(2, 100)
-        self.tblResult.setColumnWidth(3, 200)
+        self.tblResult.setColumnWidth(3, 120)
         self.tblResult.setColumnWidth(4, 50)
-        self.tblResult.setColumnWidth(5, 200)
+        # self.tblResult.setColumnWidth(5, 200)
 
         self.tblResult.setEditTriggers(
             QAbstractItemView.NoEditTriggers)      # 컬럼데이터 수정금지
 
         for i, post in enumerate(items):
             title = self.replaceHtmlTag(post['title'])      # HTML 특수문자 변환
+            subtitle = self.replaceHtmlTag(post['subtitle'])
+            title = f'{title} ({subtitle})'
             pubDate = post['pubDate']
             link = post['link']
-            director = self.replaceHtmlTag(post['director'])
-            actor = self.replaceHtmlTag(post['actor'])
+            director = self.replaceHtmlTag(post['director'])[
+                :-1]       # [:-1] 파이썬에서만 가능
+            # director = post['director'].replace('|', ',')[:-1]
+            # actor = self.replaceHtmlTag(post['actor'])
+            actor = post['actor'].replace('|', ',')[:-1]
             userRating = post['userRating']
-            image = post['image']
-        
-            if image != '':
-                img_data = urlopen(image).read()
-                pixmap = QPixmap()
-                pixmap.loadFromData(img_data)
-                imgLabel = QLabel()
-                imgLabel.setPixmap(pixmap)
-                self.tblResult.setCellWidget(i, 6, imgLabel)
+            image_url = post['image']
+
+            if image_url != '':
+                img_data = urlopen(image_url).read()
+                image = QImage()
+                image.loadFromData(img_data)
+                # pixmap = QPixmap()
+                # pixmap.loadFromData(img_data)
+                imgLabel = QLabel()     # QTableWidget 이미지를 그냥 넣을 수 없음 -> QLabel()
+                imgLabel.setPixmap(QPixmap(image))
+                # self.tblResult.setCellWidget(i, 6, imgLabel)
+                # self.tblResult.setRowHeight(i, 110)     # 포스터가 있으면 쉘 높이를 늘림
                 # print('사진있음')
                 # print(image)
             # else:
             #     print('사진없음')
             #     print(image)
 
-            # setItem(행, 컬럼, 넣을데이터)            
+            # img_data 이미지 파일로 저장
+            # f = open(f'./studyPyQt/temp/image_{i+1}.png', mode = 'wb')  # 파일쓰기
+            # f.write(img_data)
+            # f.close()
+
+            # setItem(행, 컬럼, 넣을데이터)
             self.tblResult.setItem(i, 0, QTableWidgetItem(title))
             self.tblResult.setItem(i, 1, QTableWidgetItem(pubDate))
             self.tblResult.setItem(i, 2, QTableWidgetItem(director))
             self.tblResult.setItem(i, 3, QTableWidgetItem(actor))
             self.tblResult.setItem(i, 4, QTableWidgetItem(userRating))
             self.tblResult.setItem(i, 5, QTableWidgetItem(link))
-            # self.tblResult.setItem(i, 6, QTableWidgetItem(image))
-            
-            
+            if image_url != '':
+                self.tblResult.setCellWidget(i, 6, imgLabel)
+                self.tblResult.setRowHeight(i, 110)     # 포스터가 있으면 쉘 높이를 늘림
 
+            else:
+                self.tblResult.setItem(i, 6, QTableWidgetItem("No Poster"))
+            # self.tblResult.setItem(i, 6, QTableWidgetItem(image_url))
 
     def txtSearchReturned(self):
         self.btnSearchClicked()
@@ -112,7 +129,7 @@ class qtApp(QWidget):
         result = result.replace('&apos;', "'")      # apostrophe 홑따옴표
         result = result.replace('&quot;', '"')      # quotation mark 쌍따옴표
         result = result.replace('&amp;', '&')
-        result = result.replace('|', '.')
+        result = result.replace('|', ',')
 
         # 변환되지않은 특수문자가 나타나면 추가
 
