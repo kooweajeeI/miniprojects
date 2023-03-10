@@ -29,7 +29,7 @@
   - PyQt5 / Qt Designer
 
 ![주소록앱1](https://raw.githubusercontent.com/kooweajeeI/miniprojects/main/Images/addressbook_insert.PNG)
+![주소록앱2](https://raw.githubusercontent.com/kooweajeeI/miniprojects/main/Images/addressbook_delete.PNG)
 
-<img src="https://raw.githubusercontent.com/kooweajeeI/miniprojects/main/Images/addressbook_delete.PNG" width="600"/>
 
 ## 미니프로젝트 실습
