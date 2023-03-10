@@ -22,12 +22,12 @@
 
 
 ## DB연동 GUI 개발 학습
-- 주소록 프로그램
+- 주소록 앱
   - Python 3.11.2
   - MySQL 8.0 연동
   - pymysql 모듈 사용
   - PyQt5 / Qt Designer
 
-<img src="https://raw.githubusercontent.com/kooweajeeI/miniprojects/main/Images/addressbook_insert.PNG" width="600"/>
-<img src="https://raw.githubusercontent.com/kooweajeeI/miniprojects/main/Images/addressbook_delete.PNG" width="600"/>
+![주소록앱1]<img src="https://raw.githubusercontent.com/kooweajeeI/miniprojects/main/Images/addressbook_insert.PNG" width="600"/>
+![주소록앱2]<img src="https://raw.githubusercontent.com/kooweajeeI/miniprojects/main/Images/addressbook_delete.PNG" width="600"/>
 ## 미니프로젝트 실습
