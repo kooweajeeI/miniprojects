@@ -28,6 +28,6 @@
   - pymysql 모듈 사용
   - PyQt5 / Qt Designer
 
-<img src="https://raw.githubusercontent.com/kooweajeeI/miniprojects/main/Images/addressbook_insert.PNG" width="780"/>
-<img src="https://raw.githubusercontent.com/kooweajeeI/miniprojects/main/Images/addressbook_delete.PNG" width="780"/>
+<img src="https://raw.githubusercontent.com/kooweajeeI/miniprojects/main/Images/addressbook_insert.PNG" width="600"/>
+<img src="https://raw.githubusercontent.com/kooweajeeI/miniprojects/main/Images/addressbook_delete.PNG" width="600"/>
 ## 미니프로젝트 실습
