@@ -45,4 +45,13 @@
 
 ![컴퓨터정보](https://raw.githubusercontent.com/kooweajeeI/miniprojects/main/Images/comInfoApp.PNG)
 
+
+- TTS(Text To Speech)
+  - gtts 모듈
+  - playsound 모듈
+
+- 암호해제 프로그램
+  - itertools, zipfile 기본 모듈
+
+
 ## 미니프로젝트 실습
