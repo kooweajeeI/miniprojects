@@ -55,4 +55,4 @@
 
 
 ## 미니프로젝트 실습
-  ![스레드](https://raw.githubusercontent.com/kooweajeeI/miniprojects/main/Images/thread.gif)
+
