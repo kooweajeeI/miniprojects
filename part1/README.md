@@ -55,7 +55,7 @@
 
 - 쓰레드 사용법
   - GUI와 처리시간이 긴 로직을 실행하면 반드시 쓰레드 사용
-<img src="https://raw.githubusercontent.com/kooweajeeI/miniprojects/main/Images/thread.gif" width="500"/>
+<img src="https://raw.githubusercontent.com/kooweajeeI/miniprojects/main/Images/thread.gif" width="400"/>
 
 ## 미니프로젝트 실습
 
