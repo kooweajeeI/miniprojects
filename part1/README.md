@@ -58,7 +58,11 @@
   - GUI와 처리시간이 긴 로직을 실행하면 반드시 쓰레드 사용
 <img src="https://raw.githubusercontent.com/kooweajeeI/miniprojects/main/Images/thread.gif" width="400"/>
 
-- 이메일 보내기 앱
+- 이메일 전송, 대량메일 전송
+
+- PyGame
 
 ## 미니프로젝트 실습
 
+
+[팀 리포지토리](https://github.com/Tarel-IoT-PK/Campus)
