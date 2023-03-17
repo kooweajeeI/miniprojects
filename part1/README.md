@@ -60,9 +60,13 @@
 
 - 이메일 전송, 대량메일 전송
 
-- PyGame
+- 게임만들기 - DinoRun
+  - PyGame
+  <img src="https://raw.githubusercontent.com/kooweajeeI/miniprojects/main/Images/pygame1.png" width="400"/>
+
 
 ## 미니프로젝트 실습
+- 테스트 앱 만들기
 
 
 [팀 리포지토리](https://github.com/Tarel-IoT-PK/Campus)
