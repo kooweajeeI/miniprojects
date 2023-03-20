@@ -72,7 +72,8 @@
   - folium
   - PyQt
     - QWebEngineView 추가
-  <img src="https://raw.githubusercontent.com/kooweajeeI/miniprojects/main/Images/folium_gui.png" width="780"/>
+  <img src="https://raw.githubusercontent.com/kooweajeeI/miniprojects/main/Images/folium_gui.PNG" width="780"/>
+ 
 
 ## 미니프로젝트 실습
 - 테스트 앱 만들기
