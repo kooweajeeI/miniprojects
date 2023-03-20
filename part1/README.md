@@ -73,6 +73,13 @@
   - PyQt
     - QWebEngineView 추가
   <img src="https://raw.githubusercontent.com/kooweajeeI/miniprojects/main/Images/folium_gui.PNG" width="780"/>
+
+- 계산기 앱
+  - PyQt
+
+  <img src="https://raw.githubusercontent.com/kooweajeeI/miniprojects/main/Images/calc1.PNG"/>
+  <img src="https://raw.githubusercontent.com/kooweajeeI/miniprojects/main/Images/calc2.PNG"/>
+
  
 
 ## 미니프로젝트 실습
