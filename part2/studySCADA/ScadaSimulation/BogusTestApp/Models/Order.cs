@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BogusTestApp.Models
 {
-    public class Order
+    public class Order // 주문 테이블
     {
-        public Guid Id { get; set; }
-        public DateTime Date { get; set; }
-        public decimal OrderValue { get; set; }
-        public bool Shipped { get; set; }
-
+        public Guid Id { get; set; }                // Id, 키값
+        public DateTime Date { get; set; }          // 주문 일자
+        public decimal OrderValue { get; set; }     // 주문 수
+        public bool Shipped { get; set; }           // 선적 여부
     }
 }
