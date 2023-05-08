@@ -17,8 +17,7 @@
     </mah:MetroWindow.IconTemplate>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <!-- 내부의 컨트롤의 높이를 따라감 -->
+            <RowDefinition Height="Auto" />     <!-- 내부의 컨트롤의 높이를 따라감 -->
             <RowDefinition Height="1*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
@@ -31,7 +30,7 @@
                         <iconPacks:PackIconJamIcons Kind="FileF" />
                     </MenuItem.Icon>
 
-                    <MenuItem x:Name="MnuStartSubscribe" Header="시작">
+                    <MenuItem x:Name="MnuStartSubscribe" Header="시작" Click="MnuStartSubscribe_Click">
                         <MenuItem.Icon>
                             <iconPacks:PackIconJamIcons Kind="PlayCircleF" />
                         </MenuItem.Icon>
@@ -64,8 +63,8 @@
                             <iconPacks:PackIconMaterial Kind="ChartMultiline" />
                         </MenuItem.Icon>
                     </MenuItem>
-
-
+                   
+                    
                 </MenuItem>
                 <MenuItem Header="디자인">
                     <MenuItem.Icon>
@@ -98,7 +97,7 @@
                     </Button>
                 </ToolBar>
             </ToolBarTray>
-
+            
         </StackPanel>
         <Grid Grid.Row="1" >
             <!-- UserControl embed 가능 -->

@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using SmartHomeMonitoringApp.Views;
 
 namespace SmartHomeMonitoringApp
 {
@@ -31,13 +32,27 @@ namespace SmartHomeMonitoringApp
         {
             // <Frame. ==> Page.xaml
             // <ContentControl> ==> UserControl.xaml
-            ActiveItem.Content = new VIews.DataBaseControl();
+            // ActiveItem.Content = new Views.DataBaseControl();
         }
 
         private void MnuExitProgram_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.GetCurrentProcess().Kill();
             Environment.Exit(0);
+        }
+
+        // MQTT 시작메뉴 클릭이벤트 핸들러
+        private void MnuStartSubscribe_Click(object sender, RoutedEventArgs e)
+        {
+            var mqttPopWin = new MqttPopupWindow();
+            mqttPopWin.Owner = this;
+            mqttPopWin.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            var result = mqttPopWin.ShowDialog();
+
+            if (result == true)
+            {
+                ActiveItem.Content = new Views.DataBaseControl();
+            }
         }
     }
 }
