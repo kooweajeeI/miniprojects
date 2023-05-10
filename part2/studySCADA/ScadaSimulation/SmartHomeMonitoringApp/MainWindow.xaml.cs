@@ -32,18 +32,19 @@ namespace SmartHomeMonitoringApp
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            // <Frame. ==> Page.xaml
+            // <Frame> ==> Page.xaml
             // <ContentControl> ==> UserControl.xaml
-            // ActiveItem.Content = new Views.DataBaseControl();
+            //ActiveItem.Content = new Views.DataBaseControl();
         }
 
+        // 끝내기 버튼 클릭 이벤트 핸들러
         private void MnuExitProgram_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.GetCurrentProcess().Kill();
-            Environment.Exit(0);
+            Process.GetCurrentProcess().Kill();  // 작업관리자에서 프로세스 종료!
+            Environment.Exit(0);  // 둘 중 하나만 쓰면 됨
         }
 
-        // MQTT 시작메뉴 클릭이벤트 핸들러
+        // MQTT 시작 메뉴 클릭 이벤트 핸들러
         private void MnuStartSubscribe_Click(object sender, RoutedEventArgs e)
         {
             var mqttPopWin = new MqttPopupWindow();
@@ -54,11 +55,13 @@ namespace SmartHomeMonitoringApp
             if (result == true)
             {
                 ActiveItem.Content = new Views.DataBaseControl();
+                StsSelScreen.Content = "DataBase Monitoring";  // typeof(Views.DataBaseControl);
             }
         }
 
         private async void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            // e.Cancel을 true 하고 시작
             e.Cancel = true;
 
             var mySettings = new MetroDialogSettings
@@ -69,8 +72,8 @@ namespace SmartHomeMonitoringApp
                 AnimateHide = true
             };
 
-            var result = await this.ShowMessageAsync("프로그램 끝내기", "프로그램을 끝내시겠습니까?", MessageDialogStyle.AffirmativeAndNegative, mySettings);
-
+            var result = await this.ShowMessageAsync("프로그램 끝내기", "프로그램을 끝내시겠습니까?",
+                                                      MessageDialogStyle.AffirmativeAndNegative, mySettings);
             if (result == MessageDialogResult.Negative)
             {
                 e.Cancel = true;
@@ -81,9 +84,32 @@ namespace SmartHomeMonitoringApp
                 {
                     Commons.MQTT_CLIENT.Disconnect();
                 }
-                Process.GetCurrentProcess().Kill();
+                Process.GetCurrentProcess().Kill();  // 가장 확실
             }
+        }
 
+        private void BtnExitProgram_Click(object sender, RoutedEventArgs e)
+        {
+            // 확인메시지 윈도우 클로징 이벤트 핸들러 호출
+            this.MetroWindow_Closing(sender, new System.ComponentModel.CancelEventArgs());
+        }
+
+        private void MnuDataBaseMon_Click(object sender, RoutedEventArgs e)
+        {
+            ActiveItem.Content = new Views.DataBaseControl();
+            StsSelScreen.Content = "DataBase Monitoring";  // typeof(Views.DataBaseControl);
+        }
+
+        private void MnuRealtimeMon_Click(object sender, RoutedEventArgs e)
+        {
+            ActiveItem.Content = new Views.RealTimeControl();
+            StsSelScreen.Content = "RealTime Monitoring";
+        }
+
+        private void MnuVisualizationMon_Click(object sender, RoutedEventArgs e)
+        {
+            ActiveItem.Content = new Views.VisualizationControl();
+            StsSelScreen.Content = "Visualization View";
         }
     }
 }

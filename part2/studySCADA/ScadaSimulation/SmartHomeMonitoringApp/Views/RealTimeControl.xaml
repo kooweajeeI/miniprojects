@@ -8,7 +8,7 @@
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:local="clr-namespace:SmartHomeMonitoringApp.Views"
         mc:Ignorable="d" 
-        d:DesignHeight="450" d:DesignWidth="800">
+        d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -19,6 +19,7 @@
             <iconPacks:PackIconMaterial Kind="Gauge" Margin="10" Width="24" Height="24" VerticalAlignment="Center"/>
             <Label Content="RealTime Monitoring" Style="{StaticResource MahApps.Styles.Label}"
                    FontSize="25" FontWeight="Bold" VerticalContentAlignment="Center"/>
+            <Label x:Name="LblSensingDt" Content="2023-05-10 10:37:10" FontSize="14" VerticalAlignment="Center" Margin="20, 0"/>
         </StackPanel>
         <Grid Grid.Row="1" Margin="10">
             <Grid.RowDefinitions>
@@ -39,7 +40,7 @@
             <Label Grid.Row="0" Grid.Column="3" Content="Bed Room" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" />
             <Label Grid.Row="0" Grid.Column="4" Content="Bath Room" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
-            <Label Grid.Row="1" Grid.Column="0" Content="Temperature(℃)" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Label Grid.Row="1" Grid.Column="0" Content="Temp(℃)" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Label.LayoutTransform>
                     <TransformGroup>
                         <RotateTransform Angle="270" />
@@ -72,12 +73,69 @@
                 </lvc:Gauge.GaugeActiveFill>
             </lvc:Gauge>
 
+            <lvc:Gauge Grid.Row="1" Grid.Column="2" x:Name="LvcDiningTemp" Margin="5" From="0" To="50" LabelsVisibility="Visible" Value="30" >
+                <lvc:Gauge.GaugeActiveFill>
+                    <LinearGradientBrush>
+                        <GradientStop Color="Aqua" Offset="0.0" />
+                        <GradientStop Color="GreenYellow" Offset="0.5" />
+                        <GradientStop Color="DarkOrange" Offset="1.0" />
+                    </LinearGradientBrush>
+                </lvc:Gauge.GaugeActiveFill>
+            </lvc:Gauge>
+
+            <lvc:Gauge Grid.Row="1" Grid.Column="3" x:Name="LvcBedTemp" Margin="5" From="0" To="50" LabelsVisibility="Visible" Value="30" >
+                <lvc:Gauge.GaugeActiveFill>
+                    <LinearGradientBrush>
+                        <GradientStop Color="Aqua" Offset="0.0" />
+                        <GradientStop Color="GreenYellow" Offset="0.5" />
+                        <GradientStop Color="DarkOrange" Offset="1.0" />
+                    </LinearGradientBrush>
+                </lvc:Gauge.GaugeActiveFill>
+            </lvc:Gauge>
+
+            <lvc:Gauge Grid.Row="1" Grid.Column="4" x:Name="LvcBathTemp" Margin="5" From="0" To="50" LabelsVisibility="Visible" Value="50" >
+                <lvc:Gauge.GaugeActiveFill>
+                    <LinearGradientBrush>
+                        <GradientStop Color="Aqua" Offset="0.0" />
+                        <GradientStop Color="GreenYellow" Offset="0.5" />
+                        <GradientStop Color="DarkOrange" Offset="1.0" />
+                    </LinearGradientBrush>
+                </lvc:Gauge.GaugeActiveFill>
+            </lvc:Gauge>
+
             <lvc:AngularGauge Grid.Row="2" Grid.Column="1" x:Name="LvcLivingHumid"
-                              FromValue="0" ToValue="90" LabelsStep="10" Value="20">
+                              FromValue="0" ToValue="90" LabelsStep="10" Value="20" SectionsInnerRadius="0.7" Margin="5">
                 <lvc:AngularGauge.Sections>
-                    <lvc:AngularSection FromValue="0" ToValue="40" Fill="Aqua" />
+                    <lvc:AngularSection FromValue="0" ToValue="40" Fill="Yellow" />
                     <lvc:AngularSection FromValue="40" ToValue="60" Fill="GreenYellow" />
-                    <lvc:AngularSection FromValue="60" ToValue="90" Fill="DarkOrange" />
+                    <lvc:AngularSection FromValue="60" ToValue="90" Fill="Aquamarine" />
+                </lvc:AngularGauge.Sections>
+            </lvc:AngularGauge>
+
+            <lvc:AngularGauge Grid.Row="2" Grid.Column="2" x:Name="LvcDiningHumid"
+                              FromValue="0" ToValue="90" LabelsStep="10" Value="20" SectionsInnerRadius="0.7" Margin="5">
+                <lvc:AngularGauge.Sections>
+                    <lvc:AngularSection FromValue="0" ToValue="40" Fill="Yellow" />
+                    <lvc:AngularSection FromValue="40" ToValue="60" Fill="GreenYellow" />
+                    <lvc:AngularSection FromValue="60" ToValue="90" Fill="Aquamarine" />
+                </lvc:AngularGauge.Sections>
+            </lvc:AngularGauge>
+
+            <lvc:AngularGauge Grid.Row="2" Grid.Column="3" x:Name="LvcBedHumid"
+                              FromValue="0" ToValue="90" LabelsStep="10" Value="20" SectionsInnerRadius="0.7" Margin="5">
+                <lvc:AngularGauge.Sections>
+                    <lvc:AngularSection FromValue="0" ToValue="40" Fill="Yellow" />
+                    <lvc:AngularSection FromValue="40" ToValue="60" Fill="GreenYellow" />
+                    <lvc:AngularSection FromValue="60" ToValue="90" Fill="Aquamarine" />
+                </lvc:AngularGauge.Sections>
+            </lvc:AngularGauge>
+
+            <lvc:AngularGauge Grid.Row="2" Grid.Column="4" x:Name="LvcBathHumid"
+                              FromValue="0" ToValue="90" LabelsStep="10" Value="20" SectionsInnerRadius="0.7" Margin="5">
+                <lvc:AngularGauge.Sections>
+                    <lvc:AngularSection FromValue="0" ToValue="40" Fill="Yellow" />
+                    <lvc:AngularSection FromValue="40" ToValue="60" Fill="GreenYellow" />
+                    <lvc:AngularSection FromValue="60" ToValue="90" Fill="Aquamarine" />
                 </lvc:AngularGauge.Sections>
             </lvc:AngularGauge>
         </Grid>
