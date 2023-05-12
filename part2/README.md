@@ -12,3 +12,12 @@
 	- LiveCharts
 	- OxyChart
 	
+- SmartHome시스템 문제점
+	- 실행 후 로그 텍스트박스 내용 많아 UI가 느려짐 - 해결
+	- LiveCharts는 대용량 데이터 차트는 무리 (LiveChart v2.0 동일)
+	- 대용량 데이터 차트는 OxyPlot을 사용
+	
+온습도 더미데이터 시뮬레이터
+<img src="https://raw.githubusercontent.com/kooweajeeI/miniprojects/main/Images/smarthome_publisher.gif" width="780"/>
+<img src="https://raw.githubusercontent.com/kooweajeeI/miniprojects/main/Images/smarthomemonitor1.gif" width="780"/>
+<img src="https://raw.githubusercontent.com/kooweajeeI/miniprojects/main/Images/smarthomemonitor2.png" width="780"/>

@@ -81,7 +81,7 @@
                     <MenuItem.Icon>
                         <iconPacks:PackIconMaterial Kind="HelpBox" />
                     </MenuItem.Icon>
-                    <MenuItem x:Name="MnuAbout" Header="이 프로그램">
+                    <MenuItem x:Name="MnuAbout" Header="이 프로그램" Click="MnuAbout_Click">
                         <MenuItem.Icon>
                             <iconPacks:PackIconBoxIcons Kind="SolidInfoSquare" />
                         </MenuItem.Icon>
