@@ -17,7 +17,8 @@
     </mah:MetroWindow.IconTemplate>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />     <!-- 내부의 컨트롤의 높이를 따라감 -->
+            <RowDefinition Height="Auto" />
+            <!-- 내부의 컨트롤의 높이를 따라감 -->
             <RowDefinition Height="1*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
@@ -69,13 +70,24 @@
                             <iconPacks:PackIconMaterial Kind="ChartMultiline" />
                         </MenuItem.Icon>
                     </MenuItem>
-                   
-                    
+
+
                 </MenuItem>
                 <MenuItem Header="디자인">
                     <MenuItem.Icon>
                         <iconPacks:PackIconRemixIcon Kind="Brush2Fill" />
                     </MenuItem.Icon>
+                    <MenuItem Header="테마">
+                        <MenuItem x:Name="MnuLightTheme" Header="Light" IsChecked="True" IsCheckable="True" Click="MnuThemeAccent_Checked" />
+                        <MenuItem x:Name="MnuDarkTheme" Header="Dark" IsChecked="False" IsCheckable="True" Click="MnuThemeAccent_Checked" />
+                    </MenuItem>
+
+                    <MenuItem Header="액센트">
+                        <MenuItem x:Name="MnuAccentAmber" Header="Amber" IsChecked="False" IsCheckable="True" Click="MnuThemeAccent_Checked"/>
+                        <MenuItem x:Name="MnuAccentBlue" Header="Blue" IsChecked="False" IsCheckable="True" Click="MnuThemeAccent_Checked"/>
+                        <MenuItem x:Name="MnuAccentBrown" Header="Brown" IsChecked="False" IsCheckable="True" Click="MnuThemeAccent_Checked"/>
+                        <MenuItem x:Name="MnuAccentCobalt" Header="Cobalt" IsChecked="False" IsCheckable="True" Click="MnuThemeAccent_Checked"/>
+                    </MenuItem>
                 </MenuItem>
                 <MenuItem Header="도움말">
                     <MenuItem.Icon>
@@ -103,7 +115,7 @@
                     </Button>
                 </ToolBar>
             </ToolBarTray>
-            
+
         </StackPanel>
         <Grid Grid.Row="1" >
             <!-- UserControl embed 가능 -->
